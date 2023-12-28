@@ -22,6 +22,8 @@ public class CENGFACTORYDB implements ICENGFACTORYDB{
             System.out.println(e.toString());
         }
     }
+
+    //This is for the count of the tables created and dropped when empty
     private int executeLine(String query)
     {
         try
@@ -275,6 +277,7 @@ public class CENGFACTORYDB implements ICENGFACTORYDB{
         return success;
     }
 
+    // pretty much self-explanatory
     public Factory[] getFactoriesForGivenCountry(String country) {
 
         ArrayList<Factory> factories = new ArrayList<Factory>();
@@ -303,6 +306,7 @@ public class CENGFACTORYDB implements ICENGFACTORYDB{
         return factories.toArray(new Factory[0]);
     }
 
+    // as name suggests, gives the factories without employees
     public Factory[] getFactoriesWithoutAnyEmployee() {
         ArrayList<Factory> factories = new ArrayList<Factory>();
 
@@ -333,6 +337,7 @@ public class CENGFACTORYDB implements ICENGFACTORYDB{
         return factories.toArray(new Factory[0]);
     }
 
+    // gives factories producing all products with given type
     public Factory[] getFactoriesProducingAllForGivenType(String productType) {
         ArrayList<Factory> factories = new ArrayList<Factory>();
 
@@ -372,6 +377,7 @@ public class CENGFACTORYDB implements ICENGFACTORYDB{
         return factories.toArray(new Factory[0]);
     }
 
+    // gives products that are produced but not shipped from same factory
     public Product[] getProductsProducedNotShipped() {
         ArrayList<Product> products = new ArrayList<Product>();
 
@@ -401,6 +407,7 @@ public class CENGFACTORYDB implements ICENGFACTORYDB{
         return products.toArray(new Product[0]);
     }
 
+    // gives the average salary of employees working in given factory's given department
     public double getAverageSalaryForFactoryDepartment(int factoryId, String department) {
 
         double average = 0;
@@ -430,6 +437,7 @@ public class CENGFACTORYDB implements ICENGFACTORYDB{
         return average;
     }
 
+    // gives the most valuable products for each factory
     public QueryResult.MostValueableProduct[] getMostValueableProducts() {
         ArrayList<QueryResult.MostValueableProduct> products = new ArrayList<>();
 
@@ -470,6 +478,7 @@ public class CENGFACTORYDB implements ICENGFACTORYDB{
         return products.toArray(new QueryResult.MostValueableProduct[0]);
     }
 
+    // gives the factories that gather most profit from each product
     public QueryResult.MostValueableProduct[] getMostValueableProductsOnFactory() {
         ArrayList<QueryResult.MostValueableProduct> products = new ArrayList<>();
 
@@ -511,6 +520,7 @@ public class CENGFACTORYDB implements ICENGFACTORYDB{
         return products.toArray(new QueryResult.MostValueableProduct[0]);
     }
 
+    // gives the employees that earn less than the average of their department
     public QueryResult.LowSalaryEmployees[] getLowSalaryEmployeesForDepartments() {
 
         ArrayList<QueryResult.LowSalaryEmployees> employees = new ArrayList<>();
@@ -545,6 +555,7 @@ public class CENGFACTORYDB implements ICENGFACTORYDB{
         return employees.toArray(new QueryResult.LowSalaryEmployees[0]);
     }
 
+    // increases cost of the given productType by a given percentage
     public int increaseCost(String productType, double percentage) {
 
         int success = 0;
@@ -572,6 +583,7 @@ public class CENGFACTORYDB implements ICENGFACTORYDB{
         return success;
     }
 
+    // deletes the records of the employees who are not working since the given date
     public int deleteNotWorkingEmployees(String givenDate) {
 
         int success = 0;
@@ -600,70 +612,4 @@ public class CENGFACTORYDB implements ICENGFACTORYDB{
 
     }
 
-
-    /**
-     * *******************
-     * *******************
-     * *******************
-     * *******************
-     *  THE METHODS AFTER THIS LINE WILL NOT BE GRADED.
-     *  YOU DON'T HAVE TO SOLVE THEM, LEAVE THEM AS IS IF YOU WANT.
-     *  IF YOU HAVE ANY QUESTIONS, REACH ME VIA EMAIL.
-     * *******************
-     * *******************
-     * *******************
-     * *******************
-     */
-
-    /**
-     * For each department, find the rank of the employees in terms of
-     * salary. Peers are considered tied and receive the same rank. After
-     * that, there should be a gap.
-     *
-     * @return QueryResult.EmployeeRank[]
-     */
-    public QueryResult.EmployeeRank[] calculateRank() {
-        return new QueryResult.EmployeeRank[0];
-    }
-
-    /**
-     * For each department, find the rank of the employees in terms of
-     * salary. Everything is the same but after ties, there should be no
-     * gap.
-     *
-     * @return QueryResult.EmployeeRank[]
-     */
-    public QueryResult.EmployeeRank[] calculateRank2() {
-        return new QueryResult.EmployeeRank[0];
-    }
-
-    /**
-     * For each factory, calculate the most profitable 4th product.
-     *
-     * @return QueryResult.FactoryProfit
-     */
-    public QueryResult.FactoryProfit calculateFourth() {
-        return new QueryResult.FactoryProfit(0,0,0);
-    }
-
-    /**
-     * Determine the salary variance between an employee and another
-     * one who began working immediately after the first employee (by
-     * startDate), for all employees.
-     *
-     * @return QueryResult.SalaryVariant[]
-     */
-    public QueryResult.SalaryVariant[] calculateVariance() {
-        return new QueryResult.SalaryVariant[0];
-    }
-
-    /**
-     * Create a method that is called once and whenever a Product starts
-     * losing money, deletes it from Produce table
-     *
-     * @return void
-     */
-    public void deleteLosing() {
-
-    }
 }
